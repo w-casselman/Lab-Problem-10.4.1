@@ -12,15 +12,21 @@ int main(void)
 {
 	const int SIZE = 8;
 	int arr[SIZE];
-	cout << "Enter 8-digit credit card # or Q to quit: ";
+	int n;
+
 	while (true)
 	{
-		for (int i = 0; i < SIZE; i++)
-		{
-
-		}
+		cout << "Enter 8-digit credit card # or Q to quit: ";
+		cin >> n;
 		if (cin.fail())
 			break;
+
+		for (int i = SIZE - 1; i >= 0; i--)
+		{
+			arr[i] = n % 10;
+			n /= 10;
+		}
+
 		if (isCardValid(arr, SIZE))
 		{
 			cout << "Card is valid." << endl;
@@ -29,6 +35,13 @@ int main(void)
 		{
 			cout << "Card is not valid." << endl;
 		}
+
+		for (int i = 0; i < SIZE; i++)
+		{
+			cout << arr[i] << endl;
+		}
+
+		cout << endl;
 	}
 
 	return 0;
